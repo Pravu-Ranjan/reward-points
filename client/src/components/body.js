@@ -8,7 +8,8 @@ import {
   Form,
   Button,
 } from "react-bootstrap";
-import { FcFilledFilter } from "react-icons/fc";
+import { FcCalculator, FcFilledFilter } from "react-icons/fc";
+import { PiNumberCircleOneDuotone, PiNumberCircleThreeDuotone, PiNumberCircleTwoDuotone } from "react-icons/pi";
 
 function Body({ transactionData, setTransactionData, limit, setDataLimit }) {
   const [rewardPoint, setRewardPoint] = useState({
@@ -66,11 +67,11 @@ function Body({ transactionData, setTransactionData, limit, setDataLimit }) {
             Calculation of reward is as follows:-
           </h6>
           <p className="text-start fst-italic">
-            1. If the transaction is above $100, Customer recieve 2 points.
+          <PiNumberCircleOneDuotone size={20}/>{" "}If the transaction is above $100, Customer recieve 2 points.
             <br />
-            2. 1 Point for every dollar spent between $50 to $100
+            <PiNumberCircleTwoDuotone size={20}/>{" "}1 Point for every dollar spent between $50 to $100
             <br />
-            3. If the transaction value is less than $50 then no points were
+            <PiNumberCircleThreeDuotone size={20}/>{" "}If the transaction value is less than $50 then no points were
             assigned.
           </p>
         </Col>
@@ -92,7 +93,7 @@ function Body({ transactionData, setTransactionData, limit, setDataLimit }) {
                 rewardPoint.inputedTransactionValue === 0 ? "disabled" : "show"
               }
             >
-              Check
+              <FcCalculator size={30}/>
             </Button>
           </Col>
           <p className="text-start mt-2">Points:{rewardPoint.rewardedPoints}</p>
