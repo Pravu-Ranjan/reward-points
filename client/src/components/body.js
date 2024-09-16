@@ -98,7 +98,7 @@ function Body({ transactionData, setTransactionData, limit, setDataLimit }) {
               <FcCalculator size={30}/>
             </Button>
           </Col>
-          <p className="text-start d-flex mt-2">Points:{" "}<p className="fw-bold">{rewardPoint.rewardedPoints}</p></p>
+          <p className="text-start d-flex mt-2">Points:<p className="fw-bold ms-1">{rewardPoint.rewardedPoints}</p></p>
         </Col>
       </Row>
       <Row className="justify-content-around flex-wrap-reverse w-100">
