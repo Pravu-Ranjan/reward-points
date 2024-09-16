@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/header";
 import Body from "./components/body";
 import Footer from "./components/footer";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { FcDeleteDatabase, FcEngineering } from "react-icons/fc";
 
@@ -19,7 +19,8 @@ function App() {
   const setDataPage = (data) => {
     setPage(data);
   };
-  const fetchTransaction = async () => {
+ 
+  const fetchTransaction = useCallback(async () => {
     try {
       const response = await axios.get(
         `http://localhost:3001/api/rewardapp/getreward`,
@@ -41,11 +42,11 @@ function App() {
       seApiError(true)
       console.error("Error fetching data:", error);
     }
-  };
+  },[limit, page]);
 
   useEffect(() => {
     fetchTransaction();
-  }, [limit, page]);
+  }, [fetchTransaction]);
 
   return (
     <div className="App">

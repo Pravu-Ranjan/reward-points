@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Col,
@@ -16,6 +16,19 @@ function Body({ transactionData, setTransactionData, limit, setDataLimit }) {
     inputedTransactionValue: 0,
     rewardedPoints: 0,
   });
+  const onChnageRewardPoint = (event) => {
+    setRewardPoint((prevState) => ({
+      ...prevState,
+      inputedTransactionValue: parseInt(event.target.value),
+    }));
+  };
+  const OnClickRewardPoint = (value) => {
+    setRewardPoint((prevState) => ({
+      ...prevState,
+      rewardedPoints: calculateRewardPoints(value),
+    }));
+  }
+  
   const setDataLimitForPage = (data) => {
     setDataLimit(data);
   };
@@ -35,18 +48,7 @@ function Body({ transactionData, setTransactionData, limit, setDataLimit }) {
       default:
         points = 0;
     }
-    setRewardPoint((prevState) => ({
-      ...prevState,
-      rewardedPoints: parseInt(points),
-    }));
     return parseInt(points);
-  };
-
-  const onChnageRewardPoint = (event) => {
-    setRewardPoint((prevState) => ({
-      ...prevState,
-      inputedTransactionValue: parseInt(event.target.value),
-    }));
   };
 
   const showRewardPoint = (transaction) => {
@@ -60,7 +62,7 @@ function Body({ transactionData, setTransactionData, limit, setDataLimit }) {
   };
 
   return (
-    <Container className="mt-3" fluid="md">
+    <Container className="mt-3" fluid="sm">
       <Row className="justify-content-evenly">
         <Col sm={6}>
           <h6 className="text-start mb-0">
@@ -87,7 +89,7 @@ function Body({ transactionData, setTransactionData, limit, setDataLimit }) {
             <Button
               variant="outline-success"
               onClick={() =>
-                calculateRewardPoints(rewardPoint.inputedTransactionValue)
+                OnClickRewardPoint(rewardPoint.inputedTransactionValue)
               }
               className={
                 rewardPoint.inputedTransactionValue === 0 ? "disabled" : "show"
@@ -96,12 +98,11 @@ function Body({ transactionData, setTransactionData, limit, setDataLimit }) {
               <FcCalculator size={30}/>
             </Button>
           </Col>
-          <p className="text-start mt-2">Points:{rewardPoint.rewardedPoints}</p>
+          <p className="text-start d-flex mt-2">Points:{" "}<p className="fw-bold">{rewardPoint.rewardedPoints}</p></p>
         </Col>
-        <Col sm={6}></Col>
       </Row>
-      <Row className="justify-content-around flex-wrap-reverse">
-        <Col sm={10}>
+      <Row className="justify-content-around flex-wrap-reverse w-100">
+        <Col sm={9}>
           <Table striped bordered hover variant="light">
             <thead>
               <tr>
