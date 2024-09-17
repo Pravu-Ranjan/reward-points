@@ -128,7 +128,7 @@ function Body({ transactionData, setTransactionData, limit, setDataLimit }) {
                     {new Date(data.transactionDate).toLocaleString()}
                   </td>
                   <td onClick={() => showRewardPoint(data)}>
-                    {data.transactionAmt}
+                    ${" "}{data.transactionAmt}
                   </td>
                   <td>{data?.reward}</td>
                 </tr>
