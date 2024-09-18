@@ -83,11 +83,12 @@ function Body({ transactionData, setTransactionData, limit, setDataLimit }) {
             <Form.Control
               type="number"
               placeholder="Put your transaction amount"
-              aria-label="transactionAmt"
+              aria-label="put your reward point"
               onChange={(event) => onChnageRewardPoint(event)}
             />
             <Button
               variant="outline-success"
+              aria-label="click here to calculate your reward point"
               onClick={() =>
                 OnClickRewardPoint(rewardPoint.inputedTransactionValue)
               }
