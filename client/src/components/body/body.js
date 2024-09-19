@@ -52,14 +52,14 @@ function Body({ transactionData, setTransactionData, limit, setDataLimit }) {
   };
 
   const showRewardPoint = (transaction) => {
-    setTransactionData((prevData) =>
-      prevData.map((item) =>
-        item.transactionID === transaction.transactionID
-          ? { ...item, reward: calculateRewardPoints(item.transactionAmt) }
-          : item
-      )
-    );
-  };
+  const updatedData = transactionData.map((item) =>
+    item.transactionID === transaction.transactionID
+      ? { ...item, reward: calculateRewardPoints(item.transactionAmt) }
+      : item
+  );
+  setTransactionData(updatedData);
+};
+
 
   return (
     <Container className="mt-3" fluid="sm">

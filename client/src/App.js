@@ -53,7 +53,7 @@ function App() {
       <Header />
       {loader ? (
         <div className="App-logo mx-auto">
-          <FcEngineering size={200} />
+          <FcEngineering size={200} title="loader"/>
         </div>
       ) : apiError ? (
         <div className="mx-auto p-5">
